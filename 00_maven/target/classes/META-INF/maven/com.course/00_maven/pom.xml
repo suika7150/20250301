@@ -3,5 +3,15 @@
   <groupId>com.course</groupId>
   <artifactId>00_maven</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+ <dependencies>
+ 
+ 	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-context</artifactId>
+    	<version>6.1.6</version>
+	</dependency>
+ 
+ </dependencies>
+
   <name>HelloMaven</name>
 </project>
