@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 557507d453c157cbc19f54c8dc38aab2f7b64b8c
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -24,27 +20,5 @@
 	</dependencies>
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 
-<<<<<<< HEAD
 
-=======
-
-=======
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.course</groupId>
-  <artifactId>00_maven</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
- <dependencies>
- 
- 	<dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-context</artifactId>
-    	<version>6.1.6</version>
-	</dependency>
- 
- </dependencies>
-
-  <name>HelloMaven</name>
->>>>>>> 2488b9dd92ea50eb84d565e7a5c77517b5b16519
->>>>>>> 557507d453c157cbc19f54c8dc38aab2f7b64b8c
 </project>

@@ -25,7 +25,6 @@ replay_pid*
 
 .metadata/*
 /.metadata/
-<<<<<<< HEAD
 
 Servers/*
 */target/*
@@ -33,9 +32,3 @@ Servers/*
 */.mvn/*
 */.classpath
 */.project
-=======
-<<<<<<< HEAD
-first_maven\.*
-=======
->>>>>>> 2488b9dd92ea50eb84d565e7a5c77517b5b16519
->>>>>>> 557507d453c157cbc19f54c8dc38aab2f7b64b8c
