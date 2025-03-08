@@ -3,6 +3,7 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -90,4 +91,15 @@ public class LoginController {
 		    return mv;
 		}
 		
+		// 應用在方法參數上
+		@RequestMapping(value = "/loginModelAttribute")
+		public String loginModel(@ModelAttribute("user3") UserVo user) {
+		    return "loginFail";
+		}
+		
+		// 應用在方法返回的物件上
+		@ModelAttribute("title")
+		public String getTitle() {
+		    return "我是標題";
+		}
 }
