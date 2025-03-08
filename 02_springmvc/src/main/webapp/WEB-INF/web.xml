@@ -7,7 +7,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
   <display-name>Archetype Created Web Application</display-name>
-  
+
     <servlet>
         <!-- sevlet-name 名稱自訂 -->
         <servlet-name>springMvc</servlet-name>
@@ -23,5 +23,4 @@
         <!-- 指定哪些請求要被DispatcherServlet處理 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    
 </web-app>
