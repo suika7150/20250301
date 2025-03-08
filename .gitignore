@@ -23,4 +23,7 @@
 hs_err_pid*
 replay_pid*
 /.metadata/
+<<<<<<< HEAD
 first_maven\.*
+=======
+>>>>>>> 2488b9dd92ea50eb84d565e7a5c77517b5b16519
