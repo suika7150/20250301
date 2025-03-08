@@ -27,6 +27,9 @@ public class Benz {
 	public String toString() {
 		return "Benz [engine=" + engine + "]";
 	}
+	public void move() {
 	
-	
+		engine.start();
+			
+	}
 }
