@@ -3,7 +3,11 @@ package vo;
 import java.util.Arrays;
 
 public class UserVo {
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 557507d453c157cbc19f54c8dc38aab2f7b64b8c
 	private String username;
 	
 	private String password;
