@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+C:\Users\student\Desktop\20250301\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3324281312.index
+\03_exp_guess\target\generated-sources\annotations
+C:\Users\student\Desktop\20250301\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3521242827.index
+\03_exp_guess\target\generated-sources\annotations
