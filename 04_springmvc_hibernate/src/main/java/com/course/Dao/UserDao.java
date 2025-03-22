@@ -1,4 +1,4 @@
-package com.course.Dao;
+package com.course.dao;
 
 import com.course.entity.User;
 
