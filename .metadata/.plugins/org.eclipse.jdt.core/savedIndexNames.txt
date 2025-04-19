@@ -21,7 +21,6 @@ INDEX VERSION 1.134+C:\Users\student\Desktop\20250301\.metadata\.plugins\org.ecl
 3279240686.index
 559957412.index
 1061106342.index
-1870549161.index
 3505372581.index
 3866452074.index
 372445908.index
