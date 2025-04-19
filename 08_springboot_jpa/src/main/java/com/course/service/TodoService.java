@@ -103,4 +103,7 @@ public List<TodoEntity> getByDueDate(Date dueDate) {
 	public Integer countByStatus(Integer status) {
 		return todoRepository.countByStatus(status);
 	}
+	public List<TodoEntity> findByCondition(String title, Integer status) {
+		return todoRepository.findByCondition(title, status);
+	}
 }

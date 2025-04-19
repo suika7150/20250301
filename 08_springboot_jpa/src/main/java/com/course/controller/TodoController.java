@@ -97,4 +97,8 @@ public class TodoController {
 	public Integer countByStatus(Integer status) {
 		return todoService.countByStatus(status);
 	}
+	@GetMapping("/todo/condition")
+	public List<TodoEntity> findByCondition(String title, Integer status) {
+		return todoService.findByCondition(title, status);
+	}
 }
