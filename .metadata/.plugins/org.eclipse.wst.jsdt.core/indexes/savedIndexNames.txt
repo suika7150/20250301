@@ -1,17 +1,1 @@
-<<<<<<< HEAD
 INDEX VERSION 1.4+C:\Users\student\Desktop\20250301\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2983360213.index
-3015178889.index
-1223517559.index
-180794241.index
-3645284845.index
-=======
-INDEX VERSION 1.4+C:\Users\葉權緯\Desktop\20250301\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-562323903.index
-3905699896.index
-4261073560.index
-1438469243.index
-2205648138.index
-3125224778.index
-939887803.index
->>>>>>> a8e87f6563b6db417149adcde910834eaf5bfd78
