@@ -100,4 +100,7 @@ public List<TodoEntity> getByDueDate(Date dueDate) {
 	public List<TodoEntity> findOrderTitle() {
 		return todoRepository.findAllByOrderByTitleDesc();
 	}
+	public Integer countByStatus(Integer status) {
+		return todoRepository.countByStatus(status);
+	}
 }

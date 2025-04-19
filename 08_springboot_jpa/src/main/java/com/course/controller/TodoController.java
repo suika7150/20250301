@@ -93,4 +93,8 @@ public class TodoController {
 		return todoService.findOrderTitle();
 	}
 	
+	@GetMapping("/todo/count")
+	public Integer countByStatus(Integer status) {
+		return todoService.countByStatus(status);
+	}
 }
