@@ -3,6 +3,7 @@ package com.course.repository;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -45,4 +46,6 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	@Modifying
 	@Query("update TodoEntity set title = ?2 where id = ?1")
 	Integer updateTodo(Long id, String title);
+	
+	public List<TodoEntity> findByTitle(String title, Sort sort);
 }

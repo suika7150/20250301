@@ -108,4 +108,10 @@ public class TodoController {
 	public Integer updateQuery(Long id, String title) {
 		return todoService.updateQuery(id, title);
 	}
+	
+	@Operation(summary = "取得並排序", tags = "@QueryMethod")
+	@GetMapping("/todo/titleSort/{title}")
+	public List<TodoEntity> getByTitleSort(@PathVariable String title) {
+		return todoService.getByTitleSort(title);
+	}
 }
