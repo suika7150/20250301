@@ -9,14 +9,18 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+import com.course.dto.TodoDto;
 import com.course.entity.TodoEntity;
 
+@Repository
 public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 
 	// SQL : select * from todo where title = ?
 	public List<TodoEntity> findByTitle(String title);
-
+	
 	List<TodoEntity> findByDueDate(Date dueDate);
 	
 	// SQL : select * from todo where title = ? and status = ?
@@ -24,26 +28,26 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	
 	// SQL語句：select * from todo where due_date > ?
 	List<TodoEntity> findByDueDateGreaterThan(Date dueDate);
-		
+	
 	// SQL語句：select * from todo where due_date between ? and ?
 	List<TodoEntity> findByDueDateBetween(Date startDate, Date endDate);
-		
+	
 	// SQL語句：select * from todo where title like ?
 	List<TodoEntity> findByTitleLike(String title);
-		
+	
 	// SQL語句：select * from todo where id in (?, ?, ?);
 	List<TodoEntity> findByIdIn(List<Long> ids);
-		
+	
 	// SQL語句：select * from todo order by title;
 	List<TodoEntity> findAllByOrderByTitleDesc();
 	
 	// SQL語句：select count(*) from todo where status = ?;
-		Integer countByStatus(Integer status);
-		
+	Integer countByStatus(Integer status);
+	
 //	@Query(value = "select t from TodoEntity t where t.title = ?1 and t.status = ?2")
-//	@Query(value = "select t from TodoEntity t where t.title = :title and t.status = :status ")
-	@Query(nativeQuery = true , value = "select * from todo t where t.title = :title and t.status = :status ")
-	List<TodoEntity> findByCondition(String title, Integer status);
+//	@Query(value = "select t from TodoEntity t where t.status = :status and t.title = :title")
+	@Query(nativeQuery = true , value = "select * from todo t where t.status = :status and t.title = :title")
+	List<TodoEntity> findByCondition(@Param("title") String t1, Integer status);
 	
 	@Modifying
 	@Query("update TodoEntity set title = ?2 where id = ?1")
@@ -52,4 +56,8 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	public List<TodoEntity> findByTitle(String title, Sort sort);
 	
 	public Page<TodoEntity> findAll(Pageable pageable);
+	
+	@Query("select new com.course.dto.TodoDto(t.title, u.username) from TodoEntity t join UserEntity u on u.id = t.userId")
+	List<TodoDto> getTodoDtoList();
+	
 }

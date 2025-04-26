@@ -18,18 +18,22 @@ public class TodoEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TODO_SEQ_GENERATOR")
 	@SequenceGenerator(name = "TODO_SEQ_GENERATOR", sequenceName = "TODO_SEQ", allocationSize = 1)
 	private Long id;
-	
+
 	@Column
 	private String title;
+
 	@Column(name = "DUE_DATE")
 	private Date dueDate;
+	
 	@Column
 	private Integer status;
+	
 	@Column
 	private String memo;
+	
 	@Column
 	private Long userId;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -77,11 +81,12 @@ public class TodoEntity {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "TodoEntity [id=" + id + ", title=" + title + ", dueDate=" + dueDate + ", status=" + status + ", memo="
 				+ memo + ", userId=" + userId + "]";
 	}
-	
+
+
 }

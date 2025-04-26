@@ -6,12 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.course.dto.TodoDto;
 import com.course.entity.TodoEntity;
 import com.course.repository.TodoRepository;
 
@@ -28,7 +26,8 @@ public class TodoService {
 	}
 	
 	public TodoEntity addTodo(TodoEntity entity) {
-		return todoRepository.save(entity);
+		TodoEntity todo = todoRepository.save(entity);
+		return todo;
 	}
 	
 	public void deleteAll() {
@@ -54,7 +53,6 @@ public class TodoService {
 		TodoEntity todo2 = todoRepository.findById(entity.getId()).orElse(null);
 		todo2.setTitle(entity.getTitle());
 		return todoRepository.save(todo2);
-
 	}
 	
 	public List<TodoEntity> getByTitle(String title) {
@@ -64,7 +62,8 @@ public class TodoService {
 	public List<TodoEntity> getByTitleAndUnComplete(String title, Integer status) {
 		return todoRepository.findByTitleAndStatus(title, status);
 	}
-public List<TodoEntity> getByDueDate(Date dueDate) {
+	
+	public List<TodoEntity> getByDueDate(Date dueDate) {
 		
 		System.out.println(dueDate);
 		return todoRepository.findByDueDate(dueDate);
@@ -76,11 +75,12 @@ public List<TodoEntity> getByDueDate(Date dueDate) {
 		return todoRepository.findByDueDateGreaterThan(dueDate);
 	}
 	
-	public List<TodoEntity> findByDueDateBetween(Date startDate, Date endDate) {
+	public List<TodoEntity> findByDueDateBetween(String startDate, String endDate) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date start = null;
 		Date end = null;
 		try {
+			// 2025/04/19 00:00:00
 		    start = dateFormat.parse(startDate + " 00:00:00");
 		    end = dateFormat.parse(endDate + " 23:59:59");
 		} catch (ParseException e) {
@@ -106,9 +106,12 @@ public List<TodoEntity> getByDueDate(Date dueDate) {
 	public List<TodoEntity> findOrderTitle() {
 		return todoRepository.findAllByOrderByTitleDesc();
 	}
+	
 	public Integer countByStatus(Integer status) {
 		return todoRepository.countByStatus(status);
 	}
+
+	
 	public List<TodoEntity> findByCondition(String title, Integer status) {
 		return todoRepository.findByCondition(title, status);
 	}
@@ -124,8 +127,9 @@ public List<TodoEntity> getByDueDate(Date dueDate) {
 		return todoRepository.findByTitle(title, sort);
 	}
 	
-	public Page<TodoEntity> getAllWithPage(Integer pageNum, Integer size) {
-		Pageable pageable = PageRequest.of(pageNum, size);
-		return todoRepository.findAll(pageable);
+	public List<TodoDto> findUser() {
+		List<TodoDto> dtoList = todoRepository.getTodoDtoList();
+		return dtoList;
 	}
+	
 }

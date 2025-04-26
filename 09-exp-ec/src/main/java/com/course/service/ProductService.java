@@ -30,6 +30,7 @@ public class ProductService {
 	@Autowired
 	private ProductPriceRepository productPriceRepository;
 	
+	@Autowired
 	private ProductCustomRepository customRepository;
 	
 	/**
@@ -61,14 +62,14 @@ public class ProductService {
 	 */
 	public List<ProductVo> getAllProduct() {
 		// 取得所有商品
-		List<ProductEntity> productList = null;
+		List<ProductEntity> productList = productRepository.findAll();
 		
 		return productList.stream().map(product -> {
 			ProductVo vo = new ProductVo();
 			// 取得 Entity 欄位資料，並放到 Vo 當中
 			vo.setCode(product.getCode());
 			vo.setName(product.getName());
-			
+
 			// 取得 Price 資料
 			vo.setListPrice(product.getProductPrice().getListPrice());
 			vo.setSalesPrice(product.getProductPrice().getSalesPrice());
@@ -81,15 +82,15 @@ public class ProductService {
 				for (ProductReviewEntity entity : product.getReviews()) {
 					result.add(entity.getMemo());
 				}
-				
-			if (!CollectionUtils.isEmpty(product.getCategoryList())) {
-					
-					List<String> categories = product.getCategoryList().stream().map(CategoryEntity::getName).collect(Collectors.toList());
-					vo.setCategories(categories);
-				}
 
 				vo.setMemos(result);
 
+			}
+			
+			if (!CollectionUtils.isEmpty(product.getCategoryList())) {
+				
+				List<String> categories = product.getCategoryList().stream().map(CategoryEntity::getName).collect(Collectors.toList());
+				vo.setCategories(categories);
 			}
 			
 			return vo;
@@ -107,6 +108,8 @@ public class ProductService {
 		vo.setCode(product.getCode());
 		vo.setName(product.getName());
 		// 取得 Price 資料
+		vo.setListPrice(product.getProductPrice().getListPrice());
+		vo.setSalesPrice(product.getProductPrice().getSalesPrice());
 		
 		// 取得 多筆 Review 資料
 
@@ -132,13 +135,9 @@ public class ProductService {
 		return customRepository.findByCondition(queryParam);
 	}
 	
-//	public void findProduct() {
-//		List<ProductEntity> products = productRepository.findAll();
-//		System.out.println("XXX");
-//	}
-	
 	public List<ProductEntity> findProduct() {
 		List<ProductEntity> products = productRepository.findAll();
 		return products;
 	}
+	
 }

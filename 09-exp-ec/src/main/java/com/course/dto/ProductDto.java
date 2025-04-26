@@ -2,8 +2,29 @@ package com.course.dto;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.ColumnResult;
+import jakarta.persistence.ConstructorResult;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.SqlResultSetMapping;
+
+@SqlResultSetMapping(
+name = "ProductDtoMapping",
+classes = @ConstructorResult(
+    targetClass = ProductDto.class,
+    columns = {
+        @ColumnResult(name = "NAME", type = String.class),
+        @ColumnResult(name = "LIST_PRICE", type = BigDecimal.class),
+        @ColumnResult(name = "SALES_PRICE", type = BigDecimal.class),
+        @ColumnResult(name = "MEMO", type = String.class),
+        @ColumnResult(name = "CNAME", type = String.class)
+    }
+)
+)
+//@Entity
 public class ProductDto {
 
+//	@Id
 	private Long id;
 	
 	private String code;
@@ -21,6 +42,16 @@ public class ProductDto {
 	public ProductDto() {
 
 	}
+	
+	public ProductDto(String name, BigDecimal listPrice, BigDecimal salesPrice, String memo, String cname) {
+		this.name = name;
+		this.listPrice = listPrice;
+		this.salesPrice = salesPrice;
+		this.memo = memo;
+		this.cname = cname;
+	}
+	
+	
 
 	public Long getId() {
 		return id;

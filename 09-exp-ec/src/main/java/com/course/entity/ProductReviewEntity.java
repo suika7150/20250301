@@ -30,7 +30,6 @@ public class ProductReviewEntity {
 	@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID", insertable = false, updatable = false)
 	private ProductEntity product;
 
-
 	public Long getId() {
 		return id;
 	}
@@ -47,13 +46,4 @@ public class ProductReviewEntity {
 		this.memo = memo;
 	}
 
-	public ProductEntity getProduct() {
-		return product;
-	}
-
-	public void setProduct(ProductEntity product) {
-		this.product = product;
-	}
-	
-	
 }

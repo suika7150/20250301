@@ -61,24 +61,12 @@ public class ProductController {
 		return ResponseEntity.ok().body(productList);
 	}
 	
-//	@Operation(summary = "取得所有商品", tags = "商品")
-//	@GetMapping("/products3")
-//	public ResponseEntity<String> getAll() {
-//		productService.findProduct();
-//		return ResponseEntity.ok().body("OK");
-//	}
-	
-	@Operation(summary = "依條件取得商品(EntityManager)", tags = "商品")
-	@GetMapping("/product/search")
-	public ResponseEntity<List<ProductDto>> getProductByCondition(ProductQueryParam queryParam) {
-		List<ProductDto> productList = productService.getProductByCondition(queryParam);
-		return ResponseEntity.ok().body(productList);
-	}
-	
 	@Operation(summary = "取得所有商品(Entity)", tags = "商品")
 	@GetMapping("/productsEntity")
 	public ResponseEntity<List<ProductEntity>> findProduct() {
 		List<ProductEntity> productList = productService.findProduct();
 		return ResponseEntity.ok().body(productList);
 	}
+	
+
 }

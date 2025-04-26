@@ -8,10 +8,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+//@SqlResultSetMapping(
+//	    name = "ProductDtoMapping",
+//	    classes = @ConstructorResult(
+//	        targetClass = ProductDto.class,
+//	        columns = {
+//	            @ColumnResult(name = "NAME", type = String.class),
+//	            @ColumnResult(name = "LIST_PRICE", type = BigDecimal.class),
+//	            @ColumnResult(name = "SALES_PRICE", type = BigDecimal.class),
+//	            @ColumnResult(name = "MEMO", type = String.class),
+//	            @ColumnResult(name = "CNAME", type = String.class)
+//	        }
+//	    )
+//	)
 @Entity
 @Table(name = "PRODUCT")
 public class ProductEntity {
@@ -35,10 +52,19 @@ public class ProductEntity {
 	
 	
 	// 與 Product Review 的關聯(一個商品可以有多個評論) OneToMany
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductReviewEntity> reviews;
 
 	
 	// 與 Product Category 的關聯(一個商品可以有多個分類、一個分類也會有多個商品) ManyToMany
 	// iPhone -> 3C, 手機 , 3C -> iPhone, 平板
+    @ManyToMany
+    @JoinTable(
+            name = "PRODUCT_CATEGORY", 
+            joinColumns = @JoinColumn(name = "PRODUCT_ID"), 
+            inverseJoinColumns = @JoinColumn(name = "CATEGORY_ID")
+        )
+    private List<CategoryEntity> categoryList;
       
 	public Long getId() {
 		return id;
@@ -63,7 +89,7 @@ public class ProductEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public ProductPriceEntity getProductPrice() {
 		return productPrice;
 	}
@@ -79,7 +105,6 @@ public class ProductEntity {
 	public void setReviews(List<ProductReviewEntity> reviews) {
 		this.reviews = reviews;
 	}
-	
 
 	public List<CategoryEntity> getCategoryList() {
 		return categoryList;
@@ -88,4 +113,5 @@ public class ProductEntity {
 	public void setCategoryList(List<CategoryEntity> categoryList) {
 		this.categoryList = categoryList;
 	}
+	
 }
